@@ -5,5 +5,7 @@ trust (
 	a.comes/before/b [v0.8.5, v1.0.0] Emil // we care about the highest value when sorting
 	a.comes/before/b v1.2.0 Emil
 	b.comes/after/a v1.2.3 Emil
+	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e Alice
+	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d Alice
 )
 
