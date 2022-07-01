@@ -261,7 +261,7 @@ func parseVersion(verb string, path string, s *string) (string, error) {
 	}
 
 	cv := module.CanonicalVersion(t)
-	if cv == "" {
+	if cv == "" && t != "*" {
 		return "", ParserError{
 			Verb:    verb,
 			ModPath: path,
