@@ -1,0 +1,10 @@
+audit 1
+
+trust (
+	// this is a note
+	// notes can have multiple lines
+	golang.org/x/crypto v1.0.0 Alice
+	golang.org/x/net v1.2.3 "Bob <bob@example.org>" // inline comment
+)
+
+violation example.org/malicious v1.5.0 "Nils Holgersson"

@@ -1,0 +1,9 @@
+audit 1
+
+trust (
+	a.comes/before/b v0.9.0 Emil
+	a.comes/before/b [v0.8.5, v1.0.0] Emil // we care about the highest value when sorting
+	a.comes/before/b v1.2.0 Emil
+	b.comes/after/a v1.2.3 Emil
+)
+
