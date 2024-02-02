@@ -3,12 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"strings"
+
 	"github.com/dememorized/forsikt/auditfile"
 	"github.com/dememorized/forsikt/graph"
 	"golang.org/x/mod/semver"
-	"io/ioutil"
-	"os"
-	"strings"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 	}
 
 	filename := "go.audit"
-	bytes, err := ioutil.ReadFile(filename)
+	bytes, err := os.ReadFile(filename)
 	if err != nil {
 		panic(err)
 	}
