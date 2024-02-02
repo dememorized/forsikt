@@ -15,6 +15,11 @@ type Modules struct {
 	Versions []module.Version
 }
 
+var skip = map[string]struct{}{
+    "go": {},
+    "toolchain": {},
+}
+
 func GraphModule(ctx context.Context) (*Modules, error) {
 	versions := []module.Version{}
 
@@ -45,6 +50,10 @@ func GraphModule(ctx context.Context) (*Modules, error) {
 		if len(parts) != 2 {
 			return nil, fmt.Errorf("expected target to have version, got: %s\n", target)
 		}
+
+        if _, ok := skip[parts[0]]; ok {
+            continue
+        }
 
 		versions = append(versions, module.Version{
 			Path:    parts[0],

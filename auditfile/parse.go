@@ -239,10 +239,17 @@ func parseNotes(line *Line) string {
 		return ""
 	}
 
+    trim := func (s string) string {
+        return strings.TrimSpace(strings.TrimPrefix("//", s))
+    }
+
 	var notes []string
 	for _, note := range line.Comments.Before {
-		notes = append(notes, strings.TrimPrefix("// ", note.Token))
+		notes = append(notes, trim(note.Token))
 	}
+    for _, note := range line.Comments.Suffix {
+		notes = append(notes, trim(note.Token))
+    }
 
 	return strings.Join(notes, " ")
 }

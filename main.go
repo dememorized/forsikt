@@ -91,15 +91,17 @@ func main() {
 }
 
 func versionInRanges(v string, ranges map[string]string) bool {
-	for upper, lower := range ranges {
-		// catch-all '*'
-		if upper == "" {
-			return true
-		}
+    // catch-all '*'
+    if _, catchall := ranges[""]; catchall {
+        return true
+    }
 
-		if semver.Compare(v, upper) <= 0 && semver.Compare(v, lower) >= 0 {
-			return true
-		}
-	}
+    if lower, ok := ranges[v]; ok {
+        if semver.Compare(v, lower) == 0 {
+            return true
+        }
+        return versionInRanges(lower, ranges)
+    }
+
 	return false
 }
